@@ -35,11 +35,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          - yarn install
-          - yarn bootstrap
-          - yarn build shared
-          - yarn build order
-          - yarn build warehouse
+          yarn install
+          yarn bootstrap
+          yarn build shared
+          yarn build order
+          yarn build warehouse
 
       - name: Publish
         run: npm publish
