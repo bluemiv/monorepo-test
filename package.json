@@ -1,6 +1,6 @@
 {
   "name": "monorepo-test",
-  "version": "independent",
+  "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/bluemiv/monorepo-test.git",
   "author": "taehongkim <public.bluemiv@gmail.com>",
