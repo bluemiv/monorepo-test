@@ -26,15 +26,3 @@ jobs:
           yarn build shared
           yarn build order
           yarn build warehouse
-
-      - name: Publish
-        run: |
-          if [ ${{ github.base_ref }} = development ]; then
-            yarn lerna version --conventional-commits --conventional-prerelease --preid beta --yes
-          else
-            yarn lerna version --conventional-commits --conventional-graduate --yes
-          fi
-
-          yarn lerna publish from-git --yes
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
