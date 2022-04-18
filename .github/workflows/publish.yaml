@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: Publish
         run: |
-          if [ ${{ github.base_ref }} = development ]; then
+          if [ ${{ github.base_ref }} == development ]; then
             yarn lerna version --conventional-commits --conventional-prerelease --preid beta --yes
           else
             yarn lerna version --conventional-commits --conventional-graduate --yes
