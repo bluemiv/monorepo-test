@@ -5,14 +5,7 @@
   "author": "taehongkim <public.bluemiv@gmail.com>",
   "homepage": "https://github.com/bluemiv/monorepo-test#readme",
   "license": "MIT",
-  "main": "lib/shared.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
+  "main": "dist/index.js",
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
   },
@@ -21,9 +14,19 @@
     "url": "git+https://github.com/bluemiv/monorepo-test.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "babel lib -d dist"
   },
   "bugs": {
     "url": "https://github.com/bluemiv/monorepo-test/issues"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   }
 }
