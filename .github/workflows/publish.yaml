@@ -1,0 +1,29 @@
+name: Publish
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    environment: production
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Build
+        uses: ./.github/actions/build
+
+      - name: Publish
+        run: |
+          if [ ${{ github.base_ref }} = development ]; then
+            yarn lerna version --conventional-commits --conventional-prerelease --preid beta --yes
+          else
+            yarn lerna version --conventional-commits --conventional-graduate --yes
+          fi
+
+          yarn lerna publish from-git --yes
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
