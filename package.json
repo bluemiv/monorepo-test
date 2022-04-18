@@ -10,7 +10,9 @@
     "packages/*"
   ],
   "scripts": {
+    "prestart": "yarn bootstrap",
     "start": "sh -c 'yarn lerna run start --scope=@bluemiv/${0}'",
+    "bootstrap": "yarn workspace @bluemiv/shared build && yarn lerna bootstrap",
     "build": "sh -c 'yarn workspace @bluemiv/${0} build'",
     "build:all": "yarn lerna run build",
     "deploy": "sh -c 'yarn workspace @bluemiv/${0} deploy'"
