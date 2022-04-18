@@ -2,20 +2,41 @@ name: Publish
 
 on:
   pull_request:
+    types:
+      - closed
     branches:
       - main
+      - development
 
 jobs:
   build:
+    runs-on: macos-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.14.2
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Install dependencies
+        run: |
+          yarn install
+          yarn bootstrap
+          yarn build shared
+          yarn build order
+          yarn build warehouse
+  publish:
+    if: github.event.pull_request.merged == true
     runs-on: macos-latest
     environment: production
     permissions:
       contents: read
       packages: write
     steps:
-      - name: Build
-        uses: ./.github/actions/build
-
       - name: Publish
         run: |
           if [ ${{ github.base_ref }} = development ]; then
@@ -23,7 +44,5 @@ jobs:
           else
             yarn lerna version --conventional-commits --conventional-graduate --yes
           fi
-
-          yarn lerna publish from-git --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
