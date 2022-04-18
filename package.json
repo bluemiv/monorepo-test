@@ -5,9 +5,12 @@
   "repository": "https://github.com/bluemiv/monorepo-test.git",
   "author": "taehongkim <public.bluemiv@gmail.com>",
   "license": "MIT",
-  "workspace": [
+  "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "start": "sh -c 'yarn lerna run start --scope=@bluemiv/${0}'"
+  },
   "devDependencies": {
     "lerna": "^4.0.0"
   }
