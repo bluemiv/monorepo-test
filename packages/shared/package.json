@@ -1,11 +1,11 @@
 {
   "name": "@bluemiv/shared",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> TODO: description",
   "author": "taehongkim <public.bluemiv@gmail.com>",
   "homepage": "https://github.com/bluemiv/monorepo-test#readme",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
   },
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/bluemiv/monorepo-test.git"
   },
   "scripts": {
-    "build": "babel lib -d dist"
+    "build": "babel src -d build"
   },
   "bugs": {
     "url": "https://github.com/bluemiv/monorepo-test/issues"
