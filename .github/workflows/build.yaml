@@ -1,20 +1,6 @@
 name: Build
 
-on:
-  workflow_dispatch:
-    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-          - debug
-          - info
-          - warning
-          - error
-#  pull_request:
-#    types: [opened, synchronize]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -43,3 +29,5 @@ jobs:
 
       - name: Publish
         run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
