@@ -1,5 +1,6 @@
 {
   "name": "monorepo-test",
+  "private": true,
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/bluemiv/monorepo-test.git",
@@ -9,7 +10,9 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "sh -c 'yarn lerna run start --scope=@bluemiv/${0}'"
+    "start": "sh -c 'yarn lerna run start --scope=@bluemiv/${0}'",
+    "build": "sh -c 'yarn workspace @bluemiv/${0} build'",
+    "deploy": "sh -c 'yarn workspace @bluemiv/${0} deploy'"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
