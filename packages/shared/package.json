@@ -1,6 +1,7 @@
 {
   "name": "@bluemiv/shared",
   "version": "1.0.1",
+  "private": true,
   "description": "> TODO: description",
   "author": "taehongkim <public.bluemiv@gmail.com>",
   "homepage": "https://github.com/bluemiv/monorepo-test#readme",
