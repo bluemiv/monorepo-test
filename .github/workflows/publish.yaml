@@ -9,9 +9,13 @@ on:
       - development
 
 jobs:
-  build:
+  publish:
+    if: github.event.pull_request.merged == true
     runs-on: macos-latest
     environment: production
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,14 +33,7 @@ jobs:
           yarn build shared
           yarn build order
           yarn build warehouse
-  publish:
-    if: github.event.pull_request.merged == true
-    runs-on: macos-latest
-    environment: production
-    permissions:
-      contents: read
-      packages: write
-    steps:
+
       - name: Publish
         run: |
           if [ ${{ github.base_ref }} == development ]; then
