@@ -44,5 +44,7 @@ jobs:
           else
             yarn lerna version --conventional-commits --conventional-graduate --yes
           fi
+          
+          yarn lerna publish from-git --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
