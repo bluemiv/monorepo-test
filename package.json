@@ -12,6 +12,7 @@
   "scripts": {
     "start": "sh -c 'yarn lerna run start --scope=@bluemiv/${0}'",
     "build": "sh -c 'yarn workspace @bluemiv/${0} build'",
+    "build:all": "yarn lerna run build",
     "deploy": "sh -c 'yarn workspace @bluemiv/${0} deploy'"
   },
   "devDependencies": {
